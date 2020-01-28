@@ -1,16 +1,16 @@
-import { NotDonePipe } from './todos/not-done.pipe';
+import { TodosModule } from './todos/todos.module';
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { TodoListComponent } from './todos/todo-list/todo-list.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent,
-        TodoListComponent,
-        NotDonePipe
+        AppComponent
       ],
+      imports: [
+        TodosModule
+      ]
     }).compileComponents();
   }));
 
