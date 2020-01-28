@@ -1,0 +1,12 @@
+<h3>New todo</h3>
+<form [formGroup]="todoForm" (ngSubmit)="save()">
+  <label>Name</label>
+  <input type="text" id="inputName" formControlName="name"/>
+  <label>Due date</label>
+  <input type="date" id="inputDueDate" formControlName="dueDate"/>
+  <label>Budget</label>
+  <input type="number" id="inputBudget" formControlName="budget"/>
+  <p *ngIf="todoForm.get('budget').invalid">Er is iets ni just met het budget</p>
+  <p *ngIf="todoForm.dirty && todoForm.invalid">Er is iets ni just</p>
+  <button [disabled]="todoForm.invalid">Save</button>
+</form>
