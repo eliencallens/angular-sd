@@ -1,6 +1,6 @@
+import { NotDonePipe } from './../not-done.pipe';
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../todo';
-import { of } from 'rxjs';
 
 @Component({
   selector: 'app-todo-list',

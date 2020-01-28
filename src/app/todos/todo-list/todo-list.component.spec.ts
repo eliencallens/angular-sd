@@ -1,3 +1,4 @@
+import { NotDonePipe } from './../not-done.pipe';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TodoListComponent } from './todo-list.component';
@@ -8,7 +9,7 @@ describe('TodoListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TodoListComponent ]
+      declarations: [ TodoListComponent, NotDonePipe ]
     })
     .compileComponents();
   }));
