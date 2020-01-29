@@ -1,3 +1,4 @@
+import { TodosService, MockTodosService } from './todos/todos-service';
 import { TodosModule } from './todos/todos.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
@@ -25,6 +26,9 @@ registerLocaleData(locale);
   providers: [{
     provide: LOCALE_ID,
     useValue: 'nl-BE'
+  }, {
+    provide: TodosService,
+    useClass: MockTodosService
   }],
   bootstrap: [AppComponent]
 })

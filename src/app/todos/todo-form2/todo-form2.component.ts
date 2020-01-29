@@ -1,3 +1,4 @@
+import { TodosService } from './../todos-service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../todo';
 
@@ -7,9 +8,11 @@ import { Todo } from '../todo';
   styleUrls: ['./todo-form2.component.scss']
 })
 export class TodoForm2Component {
-  @Output() saveTodo = new EventEmitter();
+  // @Output() saveTodo = new EventEmitter();
 
-  name = 'T';
+  constructor(private todosService: TodosService) { }
+
+  name = 'Todo';
   dueDate: Date;
   budget: number;
 
@@ -19,6 +22,6 @@ export class TodoForm2Component {
     todo.dueDate = this.dueDate;
     todo.budget = this.budget;
     todo.progress = 0;
-    this.saveTodo.emit(todo);
+    this.todosService.add(todo);
   }
 }
