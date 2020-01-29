@@ -1,3 +1,4 @@
+import { TodoPageComponent } from './todo-page/todo-page.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { NotDonePipe } from './not-done.pipe';
 import { NgModule } from '@angular/core';
@@ -9,8 +10,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
-  declarations: [NotDonePipe, TodoListComponent, TodoFormComponent, TodoForm2Component],
-  exports: [TodoListComponent, TodoForm2Component],
+  declarations: [
+    NotDonePipe,
+    TodoListComponent,
+    TodoFormComponent,
+    TodoForm2Component,
+    TodoPageComponent
+  ],
+  exports: [TodoPageComponent],
   imports: [
     CommonModule,
     // ReactiveFormsModule,

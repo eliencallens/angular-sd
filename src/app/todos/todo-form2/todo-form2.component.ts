@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../todo';
 
 @Component({
@@ -7,6 +7,8 @@ import { Todo } from '../todo';
   styleUrls: ['./todo-form2.component.scss']
 })
 export class TodoForm2Component {
+  @Output() saveTodo = new EventEmitter();
+
   name = 'T';
   dueDate: Date;
   budget: number;
@@ -17,6 +19,6 @@ export class TodoForm2Component {
     todo.dueDate = this.dueDate;
     todo.budget = this.budget;
     todo.progress = 0;
-    console.log(todo);
+    this.saveTodo.emit(todo);
   }
 }
