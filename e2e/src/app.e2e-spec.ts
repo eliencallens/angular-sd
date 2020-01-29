@@ -8,9 +8,14 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display form title', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('angular-sd app is running!');
+    expect(page.getTodoForm2Title()).toEqual('New todo');
+  });
+
+  it('should display list title', () => {
+    page.navigateTo();
+    expect(page.getTodoListTitle()).toEqual('Todos');
   });
 
   afterEach(async () => {

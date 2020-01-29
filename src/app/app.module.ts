@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { registerLocaleData } from '@angular/common';
 import locale from '@angular/common/locales/nl-BE';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 registerLocaleData(locale);
 
@@ -17,7 +19,8 @@ registerLocaleData(locale);
     BrowserModule,
     TodosModule,
     FormsModule,
-    // ReactiveFormsModule
+    // ReactiveFormsModule,
+    NgbModule
   ],
   providers: [{
     provide: LOCALE_ID,

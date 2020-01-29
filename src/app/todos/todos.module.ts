@@ -5,6 +5,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TodoFormComponent } from './todo-form/todo-form.component';
 import { TodoForm2Component } from './todo-form2/todo-form2.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [NotDonePipe, TodoListComponent, TodoFormComponent, TodoForm2Component],
@@ -12,7 +14,8 @@ import { TodoForm2Component } from './todo-form2/todo-form2.component';
   imports: [
     CommonModule,
     // ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ]
 })
 export class TodosModule { }

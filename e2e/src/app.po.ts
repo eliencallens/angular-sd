@@ -5,7 +5,11 @@ export class AppPage {
     return browser.get(browser.baseUrl) as Promise<any>;
   }
 
-  getTitleText() {
-    return element(by.css('app-root .content span')).getText() as Promise<string>;
+  getTodoForm2Title() {
+    return element(by.css('app-todo-form2 h3')).getText();
+  }
+
+  getTodoListTitle() {
+    return element(by.css('app-todo-list h1')).getText();
   }
 }
