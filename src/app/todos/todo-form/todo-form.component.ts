@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Todo } from '../todo';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-todo-form',
@@ -10,12 +11,18 @@ import { Todo } from '../todo';
 export class TodoFormComponent {
   todoForm: FormGroup;
 
-  constructor() {
-    this.todoForm = new FormGroup({
-      name: new FormControl('Todo', [Validators.required, Validators.minLength(3)]),
-      dueDate: new FormControl('2021-01-01', [Validators.required]),
-      budget: new FormControl(0, [Validators.min(0)])
+  constructor(private fb: FormBuilder) {
+    this.todoForm = this.fb.group({
+      name: ['Todo', [Validators.required, Validators.minLength(3)]],
+      dueDate: ['2021-01-01', [Validators.required]],
+      budget: [0, [Validators.min(0)]]
     });
+
+    // this.todoForm = new FormGroup({
+    //   name: new FormControl('Todo', [Validators.required, Validators.minLength(3)]),
+    //   dueDate: new FormControl('2021-01-01', [Validators.required]),
+    //   budget: new FormControl(0, [Validators.min(0)])
+    // });
   }
 
   save(): void {

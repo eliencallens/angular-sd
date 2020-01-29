@@ -1,0 +1,21 @@
+<h3>New todo</h3>
+<form (ngSubmit)="save()" #todoForm="ngForm" novalidate>
+  <div>
+    <label>Name</label>
+    <input type="text" name="name" [(ngModel)]="name" minlength="2" required #nameInput="ngModel"/>
+    <span class="invalid" *ngIf="nameInput.invalid">Name invalid</span>
+  </div>
+  <div>
+    <label>Due date</label>
+    <input type="date" name="dueDate" [(ngModel)]="dueDate" required #dueDateInput="ngModel"/>
+    <span class="invalid" *ngIf="dueDateInput.invalid">Due date invalid</span>
+  </div>
+  <div>
+    <label>Budget</label>
+    <input type="number" name="budget" [(ngModel)]="budget" required min="0" #budgetInput="ngModel"/>
+    <span class="invalid" *ngIf="budgetInput.invalid">Budget invalid</span>
+  </div>
+  <button [disabled]="todoForm.form.invalid">Save</button>
+  <span class="invalid" *ngIf="todoForm.invalid">Invalid form</span>
+
+</form>
