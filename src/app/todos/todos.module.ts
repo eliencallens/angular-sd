@@ -1,3 +1,4 @@
+import { ZoomDirective } from './zoom.directive';
 import { TodoPageComponent } from './todo-page/todo-page.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { NotDonePipe } from './not-done.pipe';
@@ -15,7 +16,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TodoListComponent,
     TodoFormComponent,
     TodoForm2Component,
-    TodoPageComponent
+    TodoPageComponent,
+    ZoomDirective
   ],
   exports: [TodoPageComponent],
   imports: [
