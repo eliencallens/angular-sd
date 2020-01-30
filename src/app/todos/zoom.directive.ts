@@ -4,7 +4,7 @@ import { Directive, Input, ElementRef, HostListener } from '@angular/core';
   selector: '[appZoom]'
 })
 export class ZoomDirective {
-  @Input() zoom = 1.2;
+  @Input('appZoom') zoom = 1.2;
 
   constructor(private elementRef: ElementRef) { }
 

@@ -1,37 +1,20 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Todo } from './todo';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodosService {
-  todos: Array<Todo> = [
-    {
-      name: 'Clean house',
-      budget: 0,
-      dueDate: new Date('2020-02-02'),
-      progress: 0.5
-    },
-    {
-      name: 'Refuel car',
-      budget: 50,
-      dueDate: new Date('2020-02-02'),
-      progress: 0
-    },
-    {
-      name: 'Mow lawn',
-      budget: 0,
-      dueDate: new Date('2019-08-03'),
-      progress: 1
-    }
-  ];
+  constructor(private http: HttpClient) { }
 
-  getAll(): Array<Todo> {
-    return this.todos;
+  getAll(): Observable<Todo[]> {
+    return this.http.get<Todo[]>('http://localhost:3000/todos');
   }
 
-  add(todo: Todo) {
-    this.todos.push(todo);
+  add(todo: Todo): Observable<Todo> {
+    return this.http.post<Todo>('http://localhost:3000/todos', todo);
   }
 }
 
@@ -45,11 +28,12 @@ export class MockTodosService {
     }
   ];
 
-  getAll(): Array<Todo> {
-    return this.todos;
+  getAll(): Observable<Todo[]> {
+    return of(this.todos);
   }
 
-  add(todo: Todo) {
+  add(todo: Todo): Observable<Todo> {
     this.todos.push(todo);
+    return of(todo);
   }
 }

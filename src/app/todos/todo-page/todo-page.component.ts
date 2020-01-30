@@ -1,19 +1,33 @@
-import { TodoListComponent } from './../todo-list/todo-list.component';
-import { Component, ViewChild } from '@angular/core';
+import { Observable, Subject, merge, combineLatest, Subscribable, Subscription } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { Todo } from '../todo';
+import { TodosService } from '../todos-service';
 
 @Component({
   selector: 'app-todo-page',
   templateUrl: './todo-page.component.html',
   styleUrls: ['./todo-page.component.scss']
 })
-export class TodoPageComponent {
+export class TodoPageComponent implements OnInit {
+  todos$: Observable<Todo[]>;
+  newTodos$ = new Subject<Todo[]>();
 
-  @ViewChild(TodoListComponent, { static: false })
-  todoListComponent: TodoListComponent;
+  constructor(private todosService: TodosService) { }
+  todos: Todo[];
+
+  ngOnInit(): void {
+    this.todos$ = merge(this.todosService.getAll(), this.newTodos$);
+  }
 
   saveTodo(todo: Todo) {
-    this.todoListComponent.todos.push(todo);
-    this.todoListComponent.todos = this.todoListComponent.todos.slice();
+    combineLatest(this.todos$, this.todosService.add(todo))
+      .pipe(
+        map(([todos, newTodo]) => {
+          todos.push(newTodo);
+          return todos;
+        }),
+        takeUntil(this.newTodos$)
+      ).subscribe((todos) => this.newTodos$.next(todos));
   }
 }

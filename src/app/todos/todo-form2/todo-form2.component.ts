@@ -8,9 +8,9 @@ import { Todo } from '../todo';
   styleUrls: ['./todo-form2.component.scss']
 })
 export class TodoForm2Component {
-  // @Output() saveTodo = new EventEmitter();
+  @Output() saveTodo = new EventEmitter();
 
-  constructor(private todosService: TodosService) { }
+  constructor() { }
 
   name = 'Todo';
   dueDate: Date;
@@ -22,6 +22,6 @@ export class TodoForm2Component {
     todo.dueDate = this.dueDate;
     todo.budget = this.budget;
     todo.progress = 0;
-    this.todosService.add(todo);
+    this.saveTodo.emit(todo);
   }
 }
