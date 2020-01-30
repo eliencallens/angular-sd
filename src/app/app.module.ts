@@ -1,3 +1,6 @@
+import { DummyGuard } from './dummy.guard';
+import { AppRoutingModule } from './app-routing.module';
+import { TodoPageComponent } from './todos/todo-page/todo-page.component';
 import { LogHttpInterceptor } from './todos/log-http-interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TodosService, MockTodosService } from './todos/todos-service';
@@ -10,12 +13,14 @@ import { registerLocaleData } from '@angular/common';
 import locale from '@angular/common/locales/nl-BE';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 registerLocaleData(locale);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WelcomePageComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +28,8 @@ registerLocaleData(locale);
     FormsModule,
     // ReactiveFormsModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [{
     provide: LOCALE_ID,
@@ -34,7 +40,8 @@ registerLocaleData(locale);
     useClass: LogHttpInterceptor,
     multi: true
   },
-    TodosService
+    TodosService,
+    DummyGuard
   ],
   bootstrap: [AppComponent]
 })

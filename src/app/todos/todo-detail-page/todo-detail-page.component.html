@@ -1,0 +1,8 @@
+<ng-container *ngIf="todo$ | async as todo">
+  <h1>{{todo.name}}</h1>
+  <ul>
+    <li>Due date: {{todo.dueDate | date}}</li>
+    <li>Budget: {{todo.budget | currency}}</li>
+    <li>Progress: {{todo.progress | percent}}</li>
+  </ul>
+</ng-container>

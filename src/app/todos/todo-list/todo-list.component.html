@@ -1,5 +1,5 @@
 <h1>Todos</h1>
-<table class="table table-striped" appZoom="1.6">
+<table class="table table-striped">
   <thead>
     <th>Name</th>
     <th>Due date</th>
@@ -8,7 +8,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let todo of todos | notDone">
-      <td>{{todo.name}}</td>
+      <td><a [routerLink]="['/todos', todo.id]">{{todo.name}}</a></td>
       <td>{{todo.dueDate | date:'EEEE d MMMM yy'}}</td>
       <td>{{todo.budget | currency:'EUR'}}</td>
       <td>{{todo.progress | percent}}</td>

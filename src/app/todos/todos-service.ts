@@ -16,6 +16,10 @@ export class TodosService {
   add(todo: Todo): Observable<Todo> {
     return this.http.post<Todo>('http://localhost:3000/todos', todo);
   }
+
+  get(id: number): Observable<Todo> {
+    return this.http.get<Todo>(`http://localhost:3000/todos/${id}`);
+  }
 }
 
 export class MockTodosService {
@@ -24,7 +28,8 @@ export class MockTodosService {
       name: 'Mock todo',
       budget: 0,
       dueDate: new Date('2020-02-02'),
-      progress: 0.5
+      progress: 0.5,
+      id: 0
     }
   ];
 
@@ -35,5 +40,9 @@ export class MockTodosService {
   add(todo: Todo): Observable<Todo> {
     this.todos.push(todo);
     return of(todo);
+  }
+
+  get(id: number): Observable<Todo> {
+    return of(this.todos[0]);
   }
 }

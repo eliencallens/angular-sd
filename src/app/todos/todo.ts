@@ -3,4 +3,5 @@ export class Todo {
   dueDate: Date;
   budget: number;
   progress: number;
+  id: number;
 }
